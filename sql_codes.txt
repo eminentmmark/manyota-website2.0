@@ -1,0 +1,30 @@
+//sql code for creating submittedbids table
+
+	create table submittedbids (
+	    bidIds int(64) AUTO_INCREMENT primary KEY NOT null,
+	    namesOfOrg tinytext NOT null,
+	    orgsReps tinytext NOT null,
+	    repsEmail tinytext NOT null,
+	    serviceDesired ENUM NOT null,
+	    docs longblob NOT null
+	);
+
+
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
